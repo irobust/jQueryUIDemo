@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.3.custom.css" />
+  <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.3.theme.css" />
+
+  <!-- JavaScript -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script>
+    $(function(){
+      $('#factory').autocomplete({
+        source: 'Services/factory.php'
+      });
+    });
+  </script>
+</head>
+<body>
+  <input type="text" id="factory" name="factory" />
+</body>
+</html>
