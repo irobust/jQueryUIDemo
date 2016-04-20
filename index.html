@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.3.custom.css" />
+  <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.3.theme.css" />
+
+  <!-- JavaScript -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script>
+    window.result = false;
+    $(function(){
+      $('#popup').dialog({
+        autoOpen: false,
+        draggable: false,
+        resizable: false,
+        modal: true,
+        title: 'Test dialog',
+        close: function(){
+          if(window.result){
+            $('#lblMessage').text('Dialog save successfully!');
+          }
+        },
+        buttons: [{
+          'text': 'Ok',
+          click: function(){
+            $(this).dialog('close');
+          }
+        },{
+          text: 'Cancel',
+          click: function(){}
+        }]
+      });
+      $('#btnOpenPopup').click(function(){
+        $('#popup').dialog('open');
+      });
+
+      $('#popup').load('viewContents/ajaxOpenDialog.html');
+    });
+  </script>
+</head>
+<body>
+  <button id="btnOpenPopup">Open</button>
+  <div id="popup">
+    <h3>Hello Dialog</h3>
+  </div>
+  <div id="lblMessage"></div>
+</body>
+</html>

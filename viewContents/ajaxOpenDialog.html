@@ -1,0 +1,11 @@
+<h3>Open Dialog</h3>
+<form action="">
+  <input type="text" name="name" />
+  <input type="button" id="btnSave" value="Save"/>
+</form>
+<script>
+  $('#btnSave').click(function(){
+    window.result = true;
+    console.log($('[name=name]').val());
+  });
+</script>
