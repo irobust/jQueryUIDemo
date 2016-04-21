@@ -11,23 +11,64 @@
 
     div.dragable{
       background-color: #550000;
+      float: left;
+      margin: 10px;
+      cursor:pointer;
+      z-index: 99;
     }
-    div.dropable{
+    div#dropable{
       width : 300px;
       height: 300px;
-      background-color: #005500;
+      background-color: #000088;
       position: fixed;
       right: 0px;
       bottom:0px;
+    }
+    .success{
+      background-color: green !important;
     }
   </style>
 
   <!-- JavaScript -->
   <script src="js/jquery.js"></script>
   <script src="js/jquery-ui.min.js"></script>
+  <script>
+
+    $(function(){
+      var dropIn = false;
+      $('.dragable').draggable({
+        stop: function(e, ui){
+          if(ui.position.left >= 1243 && ui.position.top >= 226){
+            dropIn = true;
+          }else{
+            dropIn = false;
+          }
+          console.log(dropIn);
+        }
+      });
+      $('#dropable').droppable({
+        tolerance: 'fit',
+        drop: function(e, ui){
+            dropIn = true;
+            // if(ui.draggable.data('result')){
+            if(ui.draggable.attr('id') === 'correct'){
+              $(this).addClass('success', 500);
+            }else{
+              ui.draggable.effect('explode',{
+                pieces: 27
+              }, 1000);
+            }
+        }
+      });
+    });
+  </script>
 </head>
 <body>
-  <div class="dropable"></div>
   <div class="dragable"></div>
+  <div class="dragable"></div>
+  <div class="dragable" data-result="true" id="correct"></div>
+  <div class="dragable"></div>
+  <div class="dragable"></div>
+  <div id="dropable"></div>
 </body>
 </html>
