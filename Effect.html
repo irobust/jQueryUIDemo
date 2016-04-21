@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: gray;
+    }
+  </style>
+
+  <!-- JavaScript -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script>
+    $(function(){
+      $('div').click(function(){
+        // $(this).hide('bounce', 3000);
+        $(this).animate({
+          width: '0px',
+          height: '0px',
+          backgroundColor: 'red'
+        }, 3000, 'easeInOutBounce');
+      });
+    });
+  </script>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

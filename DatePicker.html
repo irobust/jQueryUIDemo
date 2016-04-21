@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.3.custom.css" />
+  <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.3.theme.css" />
+
+  <!-- JavaScript -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script>
+    $.datepicker.setDefaults({
+      dateFormat: 'dd MM yy',
+      showOn: 'both',
+    });
+
+    $(function(){
+      $('.date').datepicker({
+        minDate: new Date()
+      });
+
+      $('#startdate').change(function(){
+        var startDate = $.datepicker.parseDate('dd MM yy', $('#startdate').val());
+        $('#enddate').datepicker('option', 'minDate', startDate);
+
+        var maxDate = $.datepicker.parseDate('dd MM yy', $('#startdate').val());
+        maxDate.setDate(maxDate.getDate() + 7);
+        $('#enddate').datepicker('option', 'maxDate', maxDate);
+      });
+    });
+  </script>
+</head>
+<body>
+  <label for="startdate">Start Date:</label>
+  <input type="text" id="startdate" class="date" readonly />
+  <label for="enddate">End Date:</label>
+  <input type="text" id="enddate" class="date" readonly />
+</body>
+</html>
